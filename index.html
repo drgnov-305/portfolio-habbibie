@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Habbibie Zikrillah — Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+</head>
+<body>
+
+  <!-- Page Transition Overlay -->
+  <div id="page-transition"></div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ─── Navbar ─── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">MHZ.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <p class="hero-tag">UI/UX Designer & Informatics Student</p>
+    <h1 class="hero-name">
+      <span class="line"><span>Habbibie</span></span>
+      <span class="line"><span>Zikrillah.</span></span>
+    </h1>
+    <p class="hero-desc">
+      Final-year Informatics student at Universitas Ciputra Makassar —
+      translating user needs into clear, intuitive, and functional interfaces
+      where design meets logic.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-filled">See my work</a>
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+    <div class="scroll-indicator">Scroll</div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section id="about">
+    <div class="about-left">
+      <p class="section-label reveal">About</p>
+      <h2 class="about-heading reveal">
+        Designing with<br /><em>intention,</em><br />building with care.
+      </h2>
+      <p class="about-body reveal">
+        I'm a final-year Informatics undergraduate student with a strong
+        interest in UI/UX Design. With a technical background in computer
+        science and Artificial Intelligence, I enjoy understanding how users
+        interact with technology and translating their needs into clear,
+        intuitive, and functional interfaces.
+      </p>
+      <p class="about-body reveal" style="margin-top: 1rem;">
+        Detail-oriented and analytical in my approach, I value organized
+        thinking, continuous learning, and constructive feedback. Currently
+        seeking an internship where I can grow as a designer, contribute to
+        real-world products, and collaborate with experienced professionals.
+      </p>
+      <div class="about-stats reveal">
+        <div class="stat-item">
+          <div class="stat-num">3.48</div>
+          <div class="stat-label">GPA</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Campus projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">93%</div>
+          <div class="stat-label">Usability task completion</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2026</div>
+          <div class="stat-label">Latest project</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ganti dengan <img src="foto.jpg" class="about-photo reveal" alt="Habbibie" /> -->
+    <div class="about-img-placeholder reveal">
+      Your photo here
+    </div>
+  </section>
+
+  <!-- ─── Projects ─── -->
+  <section id="projects">
+    <div class="projects-header">
+      <div>
+        <p class="section-label reveal">Projects</p>
+        <h2 class="projects-heading reveal">Selected work</h2>
+      </div>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- KasirTa' -->
+      <div class="project-card">
+        <div class="project-info">
+          <p class="project-num">01 · 2026</p>
+          <h3 class="project-name">KasirTa'</h3>
+          <p class="project-desc">
+            Web-based POS application for Indonesian UMKM — small warungs and
+            cafes. Features digital cashier, real-time sales reports, stock
+            management, and offline mode. Free, no subscription required.
+          </p>
+          <p class="project-role">
+            UI/UX Designer & Project Manager — full design system, color
+            palette, typography, and 9-screen Figma prototype. Coordinated
+            frontend and backend team.
+          </p>
+          <div class="project-tags">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Design System</span>
+            <span class="tag">Project Manager</span>
+            <span class="tag">Web App</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">↗</a>
+      </div>
+
+      <!-- Imunetra -->
+      <div class="project-card">
+        <div class="project-info">
+          <p class="project-num">02 · 2025</p>
+          <h3 class="project-name">Imunetra</h3>
+          <p class="project-desc">
+            A field-driven mobile app for volunteers and healthcare workers in
+            remote areas of Indonesia — enabling early pneumonia detection
+            through collaborative health monitoring.
+          </p>
+          <p class="project-role">
+            UI/UX Designer — user interviews, survey design, user flow,
+            wireframing, low-fidelity prototyping, usability testing.
+            Achieved 93% task completion rate across 5 participants.
+          </p>
+          <div class="project-tags">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Usability Testing</span>
+            <span class="tag">Mobile</span>
+            <span class="tag">Healthcare</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">↗</a>
+      </div>
+
+      <!-- Pulauwesi -->
+      <div class="project-card">
+        <div class="project-info">
+          <p class="project-num">03 · 2024</p>
+          <h3 class="project-name">Pulauwesi</h3>
+          <p class="project-desc">
+            A tourism platform surfacing lesser-known Sulawesi islands, with
+            Pulau Lanjukkang as the main showcase. Originated from a direct
+            field visit to the island.
+          </p>
+          <p class="project-role">
+            UI Designer — visual research, layout structuring, competitor
+            analysis, and basic frontend implementation (HTML).
+          </p>
+          <div class="project-tags">
+            <span class="tag">UI Design</span>
+            <span class="tag">Figma</span>
+            <span class="tag">HTML</span>
+            <span class="tag">Tourism</span>
+            <span class="tag">Web</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">↗</a>
+      </div>
+
+      <!-- Fihu Car -->
+      <div class="project-card">
+        <div class="project-info">
+          <p class="project-num">04 · 2023</p>
+          <h3 class="project-name">Fihu Car</h3>
+          <p class="project-desc">
+            My first campus project — a mobile platform simplifying the
+            end-to-end vehicle rental journey, from browsing to managing
+            active bookings.
+          </p>
+          <p class="project-role">
+            UI/UX Designer — user flow mapping, information architecture, UI
+            design, business model analysis, and competitor benchmarking.
+          </p>
+          <div class="project-tags">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Mobile</span>
+            <span class="tag">Business Model</span>
+            <span class="tag">Vehicle Rental</span>
+          </div>
+        </div>
+        <a href="#" class="project-link">↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Skills ─── -->
+  <section id="skills">
+    <div class="skills-layout">
+      <div class="skills-left">
+        <p class="section-label reveal">Skills</p>
+        <h2 class="skills-heading reveal">What I<br />work with</h2>
+      </div>
+      <div class="skills-right">
+
+        <div class="skill-group reveal">
+          <p class="skill-group-label">Tools</p>
+          <div class="skill-list">
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">Canva</span>
+            <span class="skill-pill">Miro</span>
+            <span class="skill-pill">HTML</span>
+            <span class="skill-pill">CSS</span>
+            <span class="skill-pill">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <p class="skill-group-label">Hard Skills</p>
+          <div class="skill-list">
+            <span class="skill-pill">Wireframing</span>
+            <span class="skill-pill">Low-Fidelity Prototyping</span>
+            <span class="skill-pill">UI Layout & Visual Hierarchy</span>
+            <span class="skill-pill">Usability Testing</span>
+            <span class="skill-pill">Task-Based Evaluation</span>
+            <span class="skill-pill">5 Second Test</span>
+            <span class="skill-pill">User Research</span>
+            <span class="skill-pill">User Interviews</span>
+            <span class="skill-pill">Survey Design</span>
+            <span class="skill-pill">Basic Frontend (HTML/CSS/JS)</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <p class="skill-group-label">Soft Skills</p>
+          <div class="skill-list">
+            <span class="skill-pill">Detail-Oriented</span>
+            <span class="skill-pill">Analytical Problem-Solving</span>
+            <span class="skill-pill">Clear Communication</span>
+            <span class="skill-pill">Receptive to Feedback</span>
+            <span class="skill-pill">Iterative Mindset</span>
+            <span class="skill-pill">Fast Learner</span>
+            <span class="skill-pill">Cross-Functional Collaboration</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact">
+    <p class="contact-eyebrow reveal">Contact</p>
+    <h2 class="contact-heading reveal">Let's work together.</h2>
+    <p class="contact-sub reveal">
+      Open for internship opportunities — UI/UX, product, or anything
+      design-adjacent. Feel free to reach out!
+    </p>
+    <div class="contact-btns reveal">
+      <a href="mailto:zikrillahhabibie@gmail.com" class="btn btn-filled">
+        zikrillahhabibie@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/habibiezkrillh" target="_blank" class="btn">
+        LinkedIn ↗
+      </a>
+      <a href="https://github.com/drgnov-305" target="_blank" class="btn">
+        GitHub ↗
+      </a>
+    </div>
+    <p class="contact-phone reveal">(+62) 877-8087-4690</p>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <span>© 2026 Muhammad Habbibie Zikrillah</span>
+    <span>Informatics · Universitas Ciputra Makassar</span>
+  </footer>
+
+  <!-- ─── Project Modal ─── -->
+  <div id="modal-overlay">
+    <div id="modal">
+      <button id="modal-close">✕</button>
+
+      <div id="modal-images">
+        <div class="mockup-placeholder">
+          <span>Mockup preview</span>
+        </div>
+      </div>
+
+      <div id="modal-body">
+        <div id="modal-meta">
+          <span id="modal-year"></span>
+          <span id="modal-type"></span>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-tagline"></p>
+
+        <div class="modal-section">
+          <p class="modal-label">The Problem</p>
+          <p id="modal-problem"></p>
+        </div>
+
+        <div class="modal-section">
+          <p class="modal-label">The Solution</p>
+          <p id="modal-solution"></p>
+        </div>
+
+        <div class="modal-section">
+          <p class="modal-label">My Role</p>
+          <p id="modal-role"></p>
+        </div>
+
+        <div id="modal-highlights"></div>
+        <div id="modal-tags"></div>
+
+        <a id="modal-cta" href="#" target="_blank" class="btn btn-filled"
+           style="margin-top: 2rem; display: inline-flex;">
+          View project ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
