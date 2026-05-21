@@ -181,7 +181,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-
 /* ── 12. Project Modal ─────────────────────────────────────── */
 const projects = {
   0: {
@@ -204,6 +203,23 @@ const projects = {
   1: {
     year: '2025',
     type: 'Campus Project',
+    title: 'AgroAI',
+    tagline: "AI-based crop and seed recommendation system helping farmers make data-driven decisions based on planting month and land altitude.",
+    problem: "Farmers often lack access to reliable, localized guidance on which crops and seed types are suitable for their land conditions — leading to suboptimal yields and wasted resources.",
+    solution: "A recommendation system leveraging local agricultural data and machine learning to suggest suitable crops and seed types. The trained model is integrated into an interactive web interface for practical everyday use.",
+    role: "ML Engineer — handled data preprocessing, feature encoding, and model training using the Random Forest algorithm, plus performance evaluation to ensure reliable predictions. Trained model integrated into an interactive web interface.",
+    highlights: [
+      { num: 'RF', label: 'Random Forest' },
+      { num: 'AI', label: 'Model-based' },
+      { num: 'Web', label: 'Interface' },
+    ],
+    tags: ['Python', 'Machine Learning', 'Random Forest', 'AI', 'Data Preprocessing', 'Feature Encoding'],
+    link: 'https://github.com/drgnov-305/alp_ai.git',
+    images: ['img/agro_ai.png'],
+  },
+  2: {
+    year: '2025',
+    type: 'Campus Project',
     title: 'Imunetra',
     tagline: "A field-driven mobile app for volunteers and healthcare workers in remote areas — enabling early pneumonia detection through collaborative health monitoring.",
     problem: "Early detection of pneumonia in remote areas is hampered by fragmented data, lack of coordination tools, and no centralized reporting system for field volunteers.",
@@ -218,7 +234,24 @@ const projects = {
     link: '#',
     images: ['img/imunetra.png'],
   },
-  2: {
+  3: {
+    year: '2024',
+    type: 'Campus Project',
+    title: 'PeduliPanti',
+    tagline: "A mobile app bridging donors and orphanages — ensuring every donation directly meets the needs of the children.",
+    problem: "Orphanage administrators struggle to manage incoming donations efficiently. There's no centralized system to track donation requests, leading to mismatched needs and wasted contributions.",
+    solution: "PeduliPanti connects donors and orphanage admins through a structured platform — admins can request specific items, track donations, and manage inventory, while donors can see exactly what's needed.",
+    role: "Frontend Developer — built the admin dashboard using HTML, CSS, and JavaScript. Developed pages for item request management, donation tracking, and administrator overview. Collaborated with the UI/UX design team to ensure consistency and simplicity across the interface.",
+    highlights: [
+      { num: 'Admin', label: 'Dashboard' },
+      { num: 'Mobile', label: 'Platform' },
+      { num: '2', label: 'Tech stacks' },
+    ],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Flutter', 'Laravel', 'Dashboard', 'Mobile App'],
+    link: '#',
+    images: ['img/peduli_panti.png', 'img/peduli_panti_2.png'],
+  },
+  4: {
     year: '2024',
     type: 'Campus Project',
     title: 'Pulauwesi',
@@ -233,9 +266,9 @@ const projects = {
     ],
     tags: ['UI Design', 'Figma', 'HTML', 'Tourism', 'Web', 'South Sulawesi'],
     link: '#',
-    images: [],
+    images: ['img/pulauwesi.png', 'img/pulauwesi_2.png'],
   },
-  3: {
+  5: {
     year: '2023',
     type: 'Campus Project',
     title: 'Fihu Car',
