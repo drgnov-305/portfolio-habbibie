@@ -58,6 +58,147 @@
   }, interval);
 })();
 
+/* ── 3D Wave (Three.js) ─────────────────────────────────────── */
+(function () {
+  const container = document.getElementById('wave-container');
+  const canvas    = document.getElementById('wave-canvas');
+  if (!container || !canvas) return;
+
+  // ── Scene setup ──
+  const scene    = new THREE.Scene();
+  const W        = container.clientWidth  || 400;
+  const H        = container.clientHeight || 500;
+  const camera   = new THREE.PerspectiveCamera(60, W / H, 0.1, 100);
+  camera.position.set(0, 2.5, 5);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  // ── Grid wave geometry ──
+  const cols     = 48;
+  const rows     = 48;
+  const spacing  = 0.22;
+  const geometry = new THREE.PlaneGeometry(
+    cols * spacing,
+    rows * spacing,
+    cols - 1,
+    rows - 1
+  );
+  geometry.rotateX(-Math.PI / 2.8);
+
+  // Warna dari palette — ungu
+  const material = new THREE.MeshBasicMaterial({
+    color: 0x7c3aed,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.55,
+  });
+
+  const wave = new THREE.Mesh(geometry, material);
+  scene.add(wave);
+
+  // Titik-titik di atas wireframe
+  const pointGeo = new THREE.BufferGeometry();
+  const positions = geometry.attributes.position.array.slice();
+  pointGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+
+  const pointMat = new THREE.PointsMaterial({
+    color: 0xa78bfa,
+    size: 0.045,
+    transparent: true,
+    opacity: 0.7,
+  });
+
+  const points = new THREE.Points(pointGeo, pointMat);
+  points.rotation.copy(wave.rotation);
+  scene.add(points);
+
+  // ── Mouse tracking ──
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  window.addEventListener('mousemove', e => {
+    mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  // ── Resize handler ──
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+
+  // ── Animate ──
+  const posAttr   = geometry.attributes.position;
+  const pointsPos = pointGeo.attributes.position;
+  const clock     = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const t = clock.getElapsedTime();
+
+    // Wave deformation
+    for (let i = 0; i < posAttr.count; i++) {
+      const x = posAttr.getX(i);
+      const z = posAttr.getZ(i);
+
+      // Kombinasi dua gelombang biar lebih natural
+      const wave1 = Math.sin(x * 1.8 + t * 1.2) * 0.28;
+      const wave2 = Math.sin(z * 1.4 + t * 0.9) * 0.22;
+      const wave3 = Math.sin((x + z) * 1.1 + t * 0.7) * 0.15;
+
+      const y = wave1 + wave2 + wave3;
+      posAttr.setY(i, y);
+      pointsPos.setY(i, y);
+    }
+
+    posAttr.needsUpdate   = true;
+    pointsPos.needsUpdate = true;
+
+    // Smooth cursor follow
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
+
+    wave.rotation.y   = targetX * 0.4;
+    wave.rotation.z   = targetY * 0.15;
+    points.rotation.y = targetX * 0.4;
+    points.rotation.z = targetY * 0.15;
+
+    // Auto subtle rotation
+    wave.rotation.y   += Math.sin(t * 0.3) * 0.003;
+    points.rotation.y += Math.sin(t * 0.3) * 0.003;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // ── Dark/light mode color update ──
+  const observer = new MutationObserver(() => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    material.color.set(isDark ? 0xa78bfa : 0x7c3aed);
+    pointMat.color.set(isDark ? 0xc4b5fd : 0xa78bfa);
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+})();
+
 
 
 /* ── 1. Register GSAP Plugins ──────────────────────────────── */

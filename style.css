@@ -1532,5 +1532,19 @@ div.skill-pill:hover::before {
   align-self: flex-end;
 }
 
+/* ─── 3D Wave ─── */
+.wave-container {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+}
 
+#wave-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
 

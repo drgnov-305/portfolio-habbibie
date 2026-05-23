@@ -20,6 +20,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -122,10 +125,10 @@
       </div>
     </div>
 
-<!-- Ganti dengan <img src="foto.jpg" class="about-photo reveal" alt="Habbibie" /> -->
-    <div class="about-img-placeholder reveal">
-      Your photo here
-    </div>
+<!-- 3D Wave -->
+<div class="wave-container reveal" id="wave-container">
+  <canvas id="wave-canvas"></canvas>
+</div>
   </section>
 
   <!-- ─── Projects ─── -->
