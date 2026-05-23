@@ -1,3 +1,65 @@
+/* ── Loading Screen ─────────────────────────────────────────── */
+(function () {
+  const screen  = document.getElementById('loading-screen');
+  const bar     = document.getElementById('loading-bar');
+  const percent = document.getElementById('loading-percent');
+  const first   = document.querySelector('.loading-first');
+  const last    = document.querySelector('.loading-last');
+  const role    = document.querySelector('.loading-role');
+
+  let progress = 0;
+  const duration = 1000; // 1 detik
+  const interval = 16;   // ~60fps
+  const step = 100 / (duration / interval);
+
+  // Fade in nama dan role dulu
+  gsap.to([first, last], {
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    stagger: 0.12,
+    ease: 'power2.out',
+  });
+
+  gsap.to([role, percent], {
+    opacity: 1,
+    duration: 0.4,
+    delay: 0.3,
+    ease: 'power2.out',
+  });
+
+  // Progress bar count up
+  const timer = setInterval(() => {
+    progress = Math.min(progress + step, 100);
+    bar.style.width = progress + '%';
+    percent.textContent = Math.round(progress) + '%';
+
+    if (progress >= 100) {
+      clearInterval(timer);
+
+      // Setelah 100% — exit animation
+      gsap.timeline({ delay: 0.15 })
+        .to('.loading-content', {
+          opacity: 0,
+          y: -20,
+          duration: 0.4,
+          ease: 'power2.in'
+        })
+        .to(screen, {
+          scaleY: 0,
+          transformOrigin: 'top',
+          duration: 0.6,
+          ease: 'expo.inOut',
+          onComplete: () => {
+            screen.style.display = 'none';
+          }
+        });
+    }
+  }, interval);
+})();
+
+
+
 /* ── 1. Register GSAP Plugins ──────────────────────────────── */
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -40,25 +102,66 @@ window.addEventListener('scroll', () => {
 
 
 /* ── 5. Hero Entrance Animation ────────────────────────────── */
+
+// Setup typing cursor
+const nameLine1 = document.querySelector('.hero-name .line:nth-child(1) span');
+const nameLine2 = document.querySelector('.hero-name .line:nth-child(2) span');
+const fullName1 = 'Habbibie';
+const fullName2 = 'Zikrillah.';
+
+// Kosongkan dulu sebelum animasi
+nameLine1.textContent = '';
+nameLine2.textContent = '';
+
+// Fungsi typing manual (tanpa TextPlugin) — lebih reliable
+function typeText(el, text, onComplete) {
+  let i = 0;
+  const interval = setInterval(() => {
+    el.textContent += text[i];
+    i++;
+    if (i >= text.length) {
+      clearInterval(interval);
+      el.classList.add('done'); // cursor hilang
+      if (onComplete) onComplete();
+    }
+  }, 80); // kecepatan per karakter — makin kecil makin cepat
+}
+
 const heroTL = gsap.timeline({ delay: 0.7 });
 
 heroTL
+  // Tag kecil fade in
   .to('.hero-tag', {
     opacity: 1,
     duration: 0.6,
     ease: 'power2.out'
   })
-  .to('.hero-name .line span', {
+  // Baris pertama slide up dulu, baru typing
+  .to(nameLine1, {
     y: 0,
-    duration: 1,
+    duration: 0.6,
     ease: 'expo.out',
-    stagger: 0.12
-  }, '-=0.2')
+    onComplete: () => {
+      typeText(nameLine1, fullName1, () => {
+        // Setelah baris 1 selesai, mulai baris 2
+        gsap.to(nameLine2, {
+          y: 0,
+          duration: 0.5,
+          ease: 'expo.out',
+          onComplete: () => {
+            typeText(nameLine2, fullName2);
+          }
+        });
+      });
+    }
+  })
+  // Desc dan CTA muncul setelah jeda
   .to('.hero-desc', {
     opacity: 1,
     duration: 0.7,
-    ease: 'power2.out'
-  }, '-=0.4')
+    ease: 'power2.out',
+    delay: (fullName1.length + fullName2.length) * 0.08 + 0.3
+  })
   .to('.hero-cta', {
     opacity: 1,
     duration: 0.6,
@@ -68,7 +171,6 @@ heroTL
     opacity: 1,
     duration: 0.6
   }, '-=0.2');
-
 
 /* ── 6. Scroll Reveal ──────────────────────────────────────── */
 gsap.utils.toArray('.reveal').forEach(el => {
@@ -167,6 +269,16 @@ gsap.utils.toArray('.stat-num').forEach(el => {
 
 
 /* ── 11. Page Exit Transition ──────────────────────────────── */
+
+// Warna sweep per section sesuai palette
+const sectionColors = {
+  '#hero':     '#1e1033',
+  '#about':    '#3b0764',
+  '#projects': '#4c1d95',
+  '#skills':   '#5b21b6',
+  '#contact':  '#6d28d9',
+};
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -221,10 +333,10 @@ const projects = {
     year: '2025',
     type: 'Campus Project',
     title: 'Imunetra',
-    tagline: "A field-driven mobile app for volunteers and healthcare workers in remote areas — enabling early pneumonia detection through collaborative health monitoring.",
+    tagline: "A field-driven mobile app for early pneumonia detection — where I first experienced the full cycle of testing, observing, and improving a product based on real user behavior. ",
     problem: "Early detection of pneumonia in remote areas is hampered by fragmented data, lack of coordination tools, and no centralized reporting system for field volunteers.",
-    solution: "A mobile app enabling volunteers and medical staff to collaboratively monitor, report, and analyze child health data — validated through user interviews, usability testing, and a 5-second test with real field users.",
-    role: "UI/UX Designer — user interviews, survey design, user flow mapping, wireframing, low-fidelity prototyping, usability testing, and iterative refinement based on feedback.",
+    solution: "A mobile app enabling volunteers and medical staff to collaboratively monitor and report child health data — validated through structured usability testing and a 5-second first impression test with real field users.",
+    role: "UI/UX Designer with a strong testing focus — conducted user interviews, designed task-based evaluation scenarios, documented findings, and iterated on the design based on structured feedback. Achieved 93% task completion rate across 5 participants (who has stakeholder from a volunteers and medical staff sides). This project introduced me to the discipline of systematic testing and quality validation.",
     highlights: [
       { num: '93%', label: 'Task completion' },
       { num: '5', label: 'Participants' },
@@ -380,3 +492,54 @@ modalOverlay.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+/* ── Back to Top ───────────────────────────────────────────── */
+const backToTop = document.getElementById('back-to-top');
+
+// Muncul setelah scroll 400px
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}, { passive: true });
+
+// Klik — scroll ke hero dengan animasi
+backToTop.addEventListener('click', () => {
+  gsap.timeline()
+    .set(overlay, { transformOrigin: 'bottom', scaleY: 0 })
+    .to(overlay, {
+      scaleY: 1,
+      duration: 0.45,
+      ease: 'expo.in',
+      onStart: () => { gsap.set(overlay, { background: '#1e1033' }); }
+    })
+    .call(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    })
+    .to(overlay, {
+      scaleY: 0,
+      duration: 0.65,
+      ease: 'expo.out',
+      transformOrigin: 'top'
+    });
+});
+
+/* ── Theme Toggle ──────────────────────────────────────────── */
+const themeToggle = document.getElementById('theme-toggle');
+
+// Cek saved preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+if (savedTheme === 'dark') themeToggle.classList.add('dark');
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next    = current === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeToggle.classList.toggle('dark', next === 'dark');
+});
+

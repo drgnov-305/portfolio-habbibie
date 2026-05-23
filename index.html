@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
@@ -20,6 +23,22 @@
 </head>
 <body>
 
+  <!-- Loading Screen -->
+  <!-- ─── Loading Screen ─── -->
+<div id="loading-screen">
+  <div class="loading-content">
+    <div class="loading-name">
+      <span class="loading-first">Habbibie</span>
+      <span class="loading-last">Zikrillah.</span>
+    </div>
+    <div class="loading-role">UI/UX Designer & QA Enthusiast</div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar" id="loading-bar"></div>
+    </div>
+    <div class="loading-percent" id="loading-percent">0%</div>
+  </div>
+</div>
+
   <!-- Page Transition Overlay -->
   <div id="page-transition"></div>
 
@@ -29,13 +48,16 @@
 
   <!-- ─── Navbar ─── -->
   <nav id="navbar">
-    <a href="#hero" class="nav-logo">MHZ.</a>
+    <a href="#hero" class="nav-logo">mhz.</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button id="theme-toggle" aria-label="Toggle theme">
+  <span id="toggle-thumb"></span>
+  </button>
   </nav>
 
   <!-- ─── Hero ─── -->
@@ -47,12 +69,15 @@
     </h1>
     <p class="hero-desc">
       Final-year Informatics student at Universitas Ciputra Makassar —
-      translating user needs into clear, intuitive, and functional interfaces
-      where design meets logic.
+      passionate about creating good digital experiences and making sure they
+      work exactly as they should.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-filled">See my work</a>
       <a href="#contact" class="btn">Get in touch</a>
+      <a href="document/CV_Muhammad Habbibie Zikrillah.pdf" download="Muhammad_Habbibie_Zikrillah_CV.pdf" class="btn btn-cv">
+        <span class="cv-icon">↓</span> Download Resume
+      </a>
     </div>
     <div class="scroll-indicator">Scroll</div>
   </section>
@@ -65,17 +90,17 @@
         Designing with<br /><em>intention,</em><br />building with care.
       </h2>
       <p class="about-body reveal">
-        I'm a final-year Informatics undergraduate student with a strong
-        interest in UI/UX Design. With a technical background in computer
-        science and Artificial Intelligence, I enjoy understanding how users
-        interact with technology and translating their needs into clear,
-        intuitive, and functional interfaces.
+         I'm a final-year Informatics student at Universitas Ciputra Makassar
+         with a strong interest in UI/UX Design and Quality Assurance. I enjoy
+         understanding how users interact with technology — whether that means
+         designing intuitive interfaces or making sure every interaction works
+         exactly as intended.
       </p>
       <p class="about-body reveal" style="margin-top: 1rem;">
-        Detail-oriented and analytical in my approach, I value organized
-        thinking, continuous learning, and constructive feedback. Currently
-        seeking an internship where I can grow as a designer, contribute to
-        real-world products, and collaborate with experienced professionals.
+        Detail-oriented and eager to learn, I'm stepping into the professional
+        world for the first time through an internship. I'm looking for a place where
+        I can grow, contribute meaningfully, and collaborate with people I can
+        genuinely learn from.
       </p>
       <div class="about-stats reveal">
         <div class="stat-item">
@@ -195,7 +220,7 @@
       <!-- PeduliPanti -->
 <div class="project-card">
   <div class="project-info">
-    <p class="project-num">06 · 2024 · Visual Programming Course</p>
+    <p class="project-num">04 · 2024 · Visual Programming Course</p>
     <h3 class="project-name">PeduliPanti</h3>
     <p class="project-desc">
       A mobile application helping orphanage administrators manage and
@@ -224,7 +249,7 @@
       <!-- Pulauwesi -->
       <div class="project-card">
         <div class="project-info">
-          <p class="project-num">04 · 2024 · Web Programming Course</p>
+          <p class="project-num">05 · 2024 · Web Programming Course</p>
           <h3 class="project-name">Pulauwesi</h3>
           <p class="project-desc">
             A tourism platform surfacing lesser-known Sulawesi islands, with
@@ -249,7 +274,7 @@
       <!-- Fihu Car -->
       <div class="project-card">
         <div class="project-info">
-          <p class="project-num">05 · 2023 · Technopreneur Course</p>
+          <p class="project-num">06 · 2023 · Technopreneur Course</p>
           <h3 class="project-name">Fihu Car</h3>
           <p class="project-desc">
             My first campus project — a mobile platform simplifying the
@@ -278,31 +303,54 @@
     <div class="skills-layout">
       <div class="skills-left">
         <p class="section-label reveal">Skills</p>
-        <h2 class="skills-heading reveal">What I<br />work with</h2>
+        <h2 class="skills-heading reveal">What I<br />usually work with</h2>
       </div>
       <div class="skills-right">
 
         <div class="skill-group reveal">
-          <p class="skill-group-label">Tools</p>
-          <div class="skill-list">
-            <span class="skill-pill">Figma</span>
-            <span class="skill-pill">Canva</span>
-            <span class="skill-pill">Miro</span>
-            <span class="skill-pill">HTML</span>
-            <span class="skill-pill">CSS</span>
-            <span class="skill-pill">JavaScript</span>
-          </div>
-        </div>
+  <p class="skill-group-label">Tech Stack & Collaboration Tools</p>
+  <div class="skill-list">
+    <div class="skill-pill" data-tooltip="Figma">
+      <i class="devicon-figma-plain"></i>
+      <span>Figma</span>
+    </div>
+    <div class="skill-pill" data-tooltip="Canva">
+      <i class="devicon-canva-original"></i>
+      <span>Canva</span>
+    </div>
+    <div class="skill-pill" data-tooltip="Miro">
+      <img src="https://cdn.simpleicons.org/miro/7c3aed" width="24" height="24" alt="Miro"/>
+      <span>Miro</span>
+    </div>
+    <div class="skill-pill" data-tooltip="HTML5">
+      <i class="devicon-html5-plain colored"></i>
+      <span>HTML</span>
+    </div>
+    <div class="skill-pill" data-tooltip="CSS3">
+      <i class="devicon-css3-plain colored"></i>
+      <span>CSS</span>
+    </div>
+    <div class="skill-pill" data-tooltip="JavaScript">
+      <i class="devicon-javascript-plain colored"></i>
+      <span>JavaScript</span>
+    </div>
+    <div class="skill-pill" data-tooltip="Python">
+      <i class="devicon-python-plain colored"></i>
+      <span>Python</span>
+    </div>
+    <div class="skill-pill" data-tooltip="Google Docs">
+      <img src="https://cdn.simpleicons.org/googledocs/7c3aed" width="24" height="24" alt="Google Docs" />
+      <span>Google Docs</span>
+    </div>
+  </div>
+</div>
 
         <div class="skill-group reveal">
-          <p class="skill-group-label">Hard Skills</p>
+          <p class="skill-group-label">UI/UX Design</p>
           <div class="skill-list">
             <span class="skill-pill">Wireframing</span>
             <span class="skill-pill">Low-Fidelity Prototyping</span>
             <span class="skill-pill">UI Layout & Visual Hierarchy</span>
-            <span class="skill-pill">Usability Testing</span>
-            <span class="skill-pill">Task-Based Evaluation</span>
-            <span class="skill-pill">5 Second Test</span>
             <span class="skill-pill">User Research</span>
             <span class="skill-pill">User Interviews</span>
             <span class="skill-pill">Survey Design</span>
@@ -311,17 +359,32 @@
         </div>
 
         <div class="skill-group reveal">
-          <p class="skill-group-label">Soft Skills</p>
+          <p class="skill-group-label">Testing & QA</p>
           <div class="skill-list">
-            <span class="skill-pill">Detail-Oriented</span>
-            <span class="skill-pill">Analytical Problem-Solving</span>
-            <span class="skill-pill">Clear Communication</span>
-            <span class="skill-pill">Receptive to Feedback</span>
-            <span class="skill-pill">Iterative Mindset</span>
-            <span class="skill-pill">Fast Learner</span>
-            <span class="skill-pill">Cross-Functional Collaboration</span>
+            <span class="skill-pill">Manual Testing</span>
+            <span class="skill-pill">Usability Testing</span>
+            <span class="skill-pill">User Acceptance Testing (UAT)</span>
+            <span class="skill-pill">5 Second Test</span>
+            <span class="skill-pill">Test Case Writing</span>
+            <span class="skill-pill">Testing Documentation</span>
+            <span class="skill-pill">SDLC</span>
           </div>
         </div>
+
+          <div class="skill-group reveal">
+    <p class="skill-group-label">Soft Skills</p>
+    <div class="skill-list">
+      <span class="skill-pill">Detail-Oriented</span>
+      <span class="skill-pill">Analytical Problem-Solving</span>
+      <span class="skill-pill">Clear Documentation & Reporting</span>
+      <span class="skill-pill">Receptive to Feedback</span>
+      <span class="skill-pill">Iterative Mindset</span>
+      <span class="skill-pill">Fast Learner</span>
+      <span class="skill-pill">Cross-Functional Collaboration</span>
+      <span class="skill-pill">Structured Thinking</span>
+      <span class="skill-pill">Critical Observation</span>
+    </div>
+  </div>
 
       </div>
     </div>
@@ -332,8 +395,8 @@
     <p class="contact-eyebrow reveal">Contact</p>
     <h2 class="contact-heading reveal">Let's work together.</h2>
     <p class="contact-sub reveal">
-      Open for internship opportunities — UI/UX, product, or anything
-      design-adjacent. Feel free to reach out!
+      Open for internship opportunities in UI/UX Design or QA — 
+      fresh, eager to learn, and ready to contribute. Feel free to reach out!
     </p>
     <div class="contact-btns reveal">
       <a href="mailto:zikrillahhabibie@gmail.com" class="btn btn-filled">
@@ -400,6 +463,14 @@
 
     </div>
   </div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Back to top">
+    ↑
+  </button>
+
+  
+  
 
   <!-- JS -->
   <script src="script.js"></script>
