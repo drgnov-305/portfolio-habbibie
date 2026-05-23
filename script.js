@@ -343,7 +343,7 @@ const projects = {
       { num: '5s', label: 'First impression test' },
     ],
     tags: ['UI/UX Design', 'Figma', 'Usability Testing', 'Mobile', 'Healthcare', 'User Research'],
-    link: '#',
+    link: 'https://www.figma.com/design/etiM0baPcyeWxtqEWivH69/ALP-Kelompok-9?node-id=273-783&t=VM2aUHc3YoBQiwjz-1',
     images: ['img/imunetra.png'],
   },
   3: {
@@ -360,7 +360,7 @@ const projects = {
       { num: '2', label: 'Tech stacks' },
     ],
     tags: ['HTML', 'CSS', 'JavaScript', 'Flutter', 'Laravel', 'Dashboard', 'Mobile App'],
-    link: '#',
+    link: 'https://github.com/trfyrt/PeduliPanti.git',
     images: ['img/peduli_panti.png', 'img/peduli_panti_2.png'],
   },
   4: {
@@ -377,7 +377,7 @@ const projects = {
       { num: 'HTML', label: 'Frontend' },
     ],
     tags: ['UI Design', 'Figma', 'HTML', 'Tourism', 'Web', 'South Sulawesi'],
-    link: '#',
+    link: 'https://github.com/Javinpro/ALP-Project-Pulauwesi',
     images: ['img/pulauwesi.png', 'img/pulauwesi_2.png'],
   },
   5: {
